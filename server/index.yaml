@@ -1,0 +1,6 @@
+indexes:
+- kind: Todo
+  properties:
+  - name: UserID
+  - name: CreatedAt
+    direction: desc

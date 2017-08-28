@@ -1,0 +1,9 @@
+runtime: go
+api_version: go1
+
+handlers:
+- url: /.*
+  script: _go_app
+
+env_variables:
+  CLIENT_ID: '723606490333-vifbbch69vm1unda38mo43o2jqvcbhn1.apps.googleusercontent.com'
