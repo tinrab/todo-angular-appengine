@@ -18,16 +18,15 @@ func responseJSON(w http.ResponseWriter, data interface{}) {
 	json.NewEncoder(w).Encode(data)
 }
 
-func readJSON(rc io.ReadCloser) (map[string]interface{}, error) {
+func readJSON(rc io.ReadCloser, v interface{}) error {
 	defer rc.Close()
 	data, err := ioutil.ReadAll(rc)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	var jsonData map[string]interface{}
-	err = json.Unmarshal(data, &jsonData)
+	err = json.Unmarshal(data, v)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return jsonData, nil
+	return nil
 }

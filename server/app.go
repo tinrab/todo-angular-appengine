@@ -6,7 +6,6 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
-	"golang.org/x/net/context"
 )
 
 var (
@@ -14,17 +13,22 @@ var (
 )
 
 func init() {
+	// Read configuration environment variables
 	clientID = os.Getenv("CLIENT_ID")
 
+	// Register routes
 	r := mux.NewRouter()
 	r.HandleFunc("/api/signin", signInHandler).
 		Methods("POST")
-	r.HandleFunc("/api/hello", authenticate(helloHandler)).
+	r.HandleFunc("/api/todos", authenticate(createTodoHandler)).
+		Methods("POST")
+	r.HandleFunc("/api/todos", authenticate(listTodosHandler)).
 		Methods("GET")
+	r.HandleFunc("/api/todos/{id}", authenticate(updateTodoHandler)).
+		Methods("POST")
+	r.HandleFunc("/api/todos/{id}", authenticate(deleteTodoHandler)).
+		Methods("DELETE")
 
-	http.Handle("/api/", cors.AllowAll().Handler(r))
-}
-
-func helloHandler(ctx context.Context, w http.ResponseWriter, r *http.Request, userID string) {
-	responseJSON(w, "Hello, "+userID)
+	// Start HTTP server
+	http.Handle("/", cors.AllowAll().Handler(r))
 }
