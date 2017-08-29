@@ -73,9 +73,10 @@ func verifyToken(ctx context.Context, token string) (string, error) {
 var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-")
 
 func generateSessionToken() string {
-	data := make([]byte, 64)
+	const n = 64
+	data := make([]byte, n)
 	rand.Read(data)
-	token := make([]rune, 64)
+	token := make([]rune, n)
 	for i := range data {
 		token[i] = letters[int(data[i])%len(letters)]
 	}

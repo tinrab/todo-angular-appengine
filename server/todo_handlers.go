@@ -7,11 +7,9 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-
+	"golang.org/x/net/context"
 	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/log"
-
-	"golang.org/x/net/context"
 )
 
 type Todo struct {
