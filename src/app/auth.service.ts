@@ -27,6 +27,7 @@ export class AuthService {
       }).then(() => {
         this.googleAuth = gapi.auth2.getAuthInstance();
         const googleUser = this.googleAuth.currentUser.get();
+        // Get user's data if he's signed in
         if (googleUser) {
           this.user = JSON.parse(localStorage.getItem('user'));
         }

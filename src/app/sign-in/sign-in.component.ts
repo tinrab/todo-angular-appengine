@@ -15,7 +15,7 @@ export class SignInComponent {
 
   signIn(): void {
     this.authService.signIn()
-      .then(user => this.router.navigateByUrl(''))
+      .then(_ => this.router.navigateByUrl(''))
       .catch(error => console.log(error));
   }
 

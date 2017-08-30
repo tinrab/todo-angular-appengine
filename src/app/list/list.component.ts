@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-list',
@@ -14,12 +15,15 @@ export class ListComponent implements AfterViewInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private todoService: TodoService
   ) {
     this.user = this.authService.currentUser;
   }
 
   ngAfterViewInit(): void {
+    this.todoService.listTodos()
+    .then(todos => console.log(todos));
   }
 
   signOut(): void {

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ListComponent } from './list/list.component';
 import { AuthService } from './auth.service';
+import { TodoService } from './todo.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { AuthService } from './auth.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
