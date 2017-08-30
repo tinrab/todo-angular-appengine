@@ -39,8 +39,26 @@ export class ListComponent implements AfterViewInit {
     if (title) {
       this.todoService.createTodo(title)
       .then(todo => this.todos.unshift(todo));
+      // Reset input's value if successful
       this.newTodoTitle = '';
     }
+  }
+
+  updateTodo(todo: Todo, title: string): void {
+    title = title.trim();
+    if (title.length !== 0 && todo.title !== title) {
+      this.todoService.updateTodo(todo.id, title)
+      .then(_ => todo.title = title);
+    }
+  }
+
+  deleteTodo(todo: Todo): void {
+    this.todoService.deleteTodo(todo.id)
+    .then(() => this.todos = this.todos.filter(e => e.id !== todo.id));
+  }
+
+  trackByTodos(index: string, todo: Todo): string {
+    return todo.id;
   }
 
 }

@@ -13,7 +13,9 @@
 </div>
 
 <ul>
-  <li *ngFor="let todo of todos">
-    <app-todo [item]="todo"></app-todo>
+  <li *ngFor="let todo of todos; trackBy: trackByTodos">
+    <app-todo [item]="todo"
+              (updateRequest)="updateTodo(todo, $event)"
+              (deleteRequest)="deleteTodo(todo)"></app-todo>
   </li>
 </ul>

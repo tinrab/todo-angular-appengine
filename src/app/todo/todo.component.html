@@ -1,3 +1,13 @@
-<p>
-  {{item.title}}
-</p>
+<div>
+  <span *ngIf="!editMode; else titleInput"
+        (click)="onTitleClick()">{{item.title}}</span>
+  <ng-template #titleInput>
+    <input type="text"
+           [(ngModel)]="editableTitle"
+           (keyup.enter)="update()"
+           (blur)="onTitleInputBlur()">
+  </ng-template>
+</div>
+
+<button (click)="delete()"
+        [disabled]="editMode">x</button>

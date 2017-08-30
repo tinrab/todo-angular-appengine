@@ -42,7 +42,7 @@ export class TodoService {
   }
 
   updateTodo(id: string, title: string): Promise<Todo> {
-    return this.http.put<Todo>(
+    return this.http.post<Todo>(
       `${environment.apiUrl}/todos/${id}`,
       { title: title },
       { headers: this.headers }
