@@ -26,7 +26,7 @@ export class TodoService {
     });
   }
 
-  create(title: string): Promise<Todo> {
+  createTodo(title: string): Promise<Todo> {
     return this.http.post<Todo>(
       `${environment.apiUrl}/todos`,
       { title: title },
@@ -41,7 +41,7 @@ export class TodoService {
     ).toPromise();
   }
 
-  update(id: string, title: string): Promise<Todo> {
+  updateTodo(id: string, title: string): Promise<Todo> {
     return this.http.put<Todo>(
       `${environment.apiUrl}/todos/${id}`,
       { title: title },
@@ -49,7 +49,7 @@ export class TodoService {
     ).toPromise();
   }
 
-  delete(id: string): Promise<void> {
+  deleteTodo(id: string): Promise<void> {
     return this.http.delete<Todo>(
       `${environment.apiUrl}/todos/${id}`,
       { headers: this.headers }

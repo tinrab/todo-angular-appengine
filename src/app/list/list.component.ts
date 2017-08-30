@@ -14,6 +14,7 @@ export class ListComponent implements AfterViewInit {
 
   user: User;
   todos: Todo[];
+  newTodoTitle: string;
 
   constructor(
     private router: Router,
@@ -31,6 +32,15 @@ export class ListComponent implements AfterViewInit {
   signOut(): void {
     this.authService.signOut();
     this.router.navigateByUrl('signin');
+  }
+
+  createTodo(): void {
+    const title = this.newTodoTitle.trim();
+    if (title) {
+      this.todoService.createTodo(title)
+      .then(todo => this.todos.unshift(todo));
+      this.newTodoTitle = '';
+    }
   }
 
 }

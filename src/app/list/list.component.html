@@ -5,6 +5,13 @@
   <button (click)="signOut()">Sign out</button>
 </div>
 
+<div>
+  <input type="text"
+         placeholder="New To-Do.."
+         [(ngModel)]="newTodoTitle"
+         (keyup.enter)="createTodo()">
+</div>
+
 <ul>
   <li *ngFor="let todo of todos">
     <app-todo [item]="todo"></app-todo>
