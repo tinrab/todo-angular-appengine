@@ -1,5 +1,22 @@
 :host {
   display: block;
+  box-sizing: border-box;
   width: 400px;
-  margin: 32px auto;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+
+  &__sign-out {
+    margin-left: auto;
+  }
+}
+
+.new-todo-field {
+  width: 100%;
 }

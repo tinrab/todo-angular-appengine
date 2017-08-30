@@ -1,14 +1,23 @@
-<div>
-  <span *ngIf="!editMode; else titleInput"
-        (click)="onTitleClick()">{{item.title}}</span>
-  <ng-template #titleInput>
-    <input type="text"
-           [(ngModel)]="editableTitle"
-           (keyup.enter)="update()"
-           (blur)="onTitleInputBlur()"
-           appAutofocus>
-  </ng-template>
-</div>
+<md-list-item>
 
-<button (click)="delete()"
-        [disabled]="editMode">x</button>
+  <span md-line
+        *ngIf="!editMode; else titleInput"
+        (click)="onTitleClick()">{{item.title}}</span>
+
+  <ng-template #titleInput>
+    <md-form-field class="title-input">
+      <input mdInput
+             type="text"
+             [(ngModel)]="editableTitle"
+             (keyup.enter)="update()"
+             (blur)="onTitleInputBlur()">
+    </md-form-field>
+  </ng-template>
+
+  <button md-icon-button
+          (click)="delete()"
+          [disabled]="editMode">
+    <md-icon class="md-24">done</md-icon>
+  </button>
+
+</md-list-item>

@@ -38,14 +38,19 @@ export class AuthService {
   signIn(): Promise<User> {
     return new Promise<User>((resolve, reject) => {
       this.googleAuth.signIn({
+        // Show the prompt
         'prompt': 'consent'
       }).then(googleUser => {
+        // Get Google ID token
         const token = googleUser.getAuthResponse().id_token;
+        // Sign in with the back-end service
         this.http.post<SignInResponse>(`${environment.apiUrl}/signin`, null, {
           headers: new HttpHeaders().set('Authorization', token)
         }).subscribe(res => {
           const profile = googleUser.getBasicProfile();
+          // Create the user
           this.user = new User(res.userId, res.sessionToken, profile.getName());
+          // Save the user to local storage
           localStorage.setItem('user', JSON.stringify(this.user));
           resolve(this.user);
         }, reject);

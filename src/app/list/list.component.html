@@ -1,21 +1,23 @@
-<h1>To-Do List</h1>
-
-<div>
+<div class="user">
   Signed in as {{user.displayName}}.
-  <button (click)="signOut()">Sign out</button>
+  <button md-button
+          class="user__sign-out"
+          (click)="signOut()">Sign out</button>
 </div>
 
 <div>
-  <input type="text"
-         placeholder="New To-Do.."
-         [(ngModel)]="newTodoTitle"
-         (keyup.enter)="createTodo()">
+  <md-form-field class="new-todo-field">
+    <input mdInput
+           type="text"
+           placeholder="New To-Do.."
+           [(ngModel)]="newTodoTitle"
+           (keyup.enter)="createTodo()">
+  </md-form-field>
 </div>
 
-<ul>
-  <li *ngFor="let todo of todos; trackBy: trackByTodos">
-    <app-todo [item]="todo"
-              (updateRequest)="updateTodo(todo, $event)"
-              (deleteRequest)="deleteTodo(todo)"></app-todo>
-  </li>
-</ul>
+<md-list>
+  <app-todo *ngFor="let todo of todos; trackBy: trackByTodos"
+            [item]="todo"
+            (updateRequest)="updateTodo(todo, $event)"
+            (deleteRequest)="deleteTodo(todo)"></app-todo>
+</md-list>
