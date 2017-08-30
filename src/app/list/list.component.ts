@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
 import { TodoService } from '../todo.service';
+import { Todo } from '../todo.model';
 
 @Component({
   selector: 'app-list',
@@ -12,6 +13,7 @@ import { TodoService } from '../todo.service';
 export class ListComponent implements AfterViewInit {
 
   user: User;
+  todos: Todo[];
 
   constructor(
     private router: Router,
@@ -23,7 +25,7 @@ export class ListComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.todoService.listTodos()
-    .then(todos => console.log(todos));
+    .then(todos => this.todos = todos);
   }
 
   signOut(): void {

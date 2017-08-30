@@ -8,12 +8,14 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ListComponent } from './list/list.component';
 import { AuthService } from './auth.service';
 import { TodoService } from './todo.service';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    ListComponent
+    ListComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,2 +1,12 @@
-<p>Hey, {{user.displayName}}</p>
-<button (click)="signOut()">Sign out</button>
+<h1>To-Do List</h1>
+
+<div>
+  Signed in as {{user.displayName}}.
+  <button (click)="signOut()">Sign out</button>
+</div>
+
+<ul>
+  <li *ngFor="let todo of todos">
+    <app-todo [item]="todo"></app-todo>
+  </li>
+</ul>
