@@ -5,7 +5,8 @@
     <input type="text"
            [(ngModel)]="editableTitle"
            (keyup.enter)="update()"
-           (blur)="onTitleInputBlur()">
+           (blur)="onTitleInputBlur()"
+           appAutofocus>
   </ng-template>
 </div>
 

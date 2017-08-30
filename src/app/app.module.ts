@@ -10,13 +10,15 @@ import { ListComponent } from './list/list.component';
 import { AuthService } from './auth.service';
 import { TodoService } from './todo.service';
 import { TodoComponent } from './todo/todo.component';
+import { AutofocusDirective } from './autofocus.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     ListComponent,
-    TodoComponent
+    TodoComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,

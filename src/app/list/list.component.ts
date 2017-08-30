@@ -8,7 +8,8 @@ import { Todo } from '../todo.model';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html'
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements AfterViewInit {
 
@@ -26,7 +27,7 @@ export class ListComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.todoService.listTodos()
-    .then(todos => this.todos = todos);
+      .then(todos => this.todos = todos);
   }
 
   signOut(): void {
@@ -38,7 +39,7 @@ export class ListComponent implements AfterViewInit {
     const title = this.newTodoTitle.trim();
     if (title) {
       this.todoService.createTodo(title)
-      .then(todo => this.todos.unshift(todo));
+        .then(todo => this.todos.unshift(todo));
       // Reset input's value if successful
       this.newTodoTitle = '';
     }
@@ -48,13 +49,13 @@ export class ListComponent implements AfterViewInit {
     title = title.trim();
     if (title.length !== 0 && todo.title !== title) {
       this.todoService.updateTodo(todo.id, title)
-      .then(_ => todo.title = title);
+        .then(_ => todo.title = title);
     }
   }
 
   deleteTodo(todo: Todo): void {
     this.todoService.deleteTodo(todo.id)
-    .then(() => this.todos = this.todos.filter(e => e.id !== todo.id));
+      .then(() => this.todos = this.todos.filter(e => e.id !== todo.id));
   }
 
   trackByTodos(index: string, todo: Todo): string {

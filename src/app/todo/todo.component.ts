@@ -9,7 +9,8 @@ import { Todo } from '../todo.model';
 
 @Component({
   selector: 'app-todo',
-  templateUrl: './todo.component.html'
+  templateUrl: './todo.component.html',
+  styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent {
 
