@@ -1,5 +1,9 @@
 # Todo List
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/outcrawl/site/master/site/static/images/todo-list-angular-google-app-engine-part-1/finished.gif"/>
+</p>
+
 A short tutorial series about building a To-Do List using Angular and Google App Engine.
 
 1. [Build a Todo List with Angular and Google App Engine - Part 1](https://outcrawl.com/todo-list-angular-google-app-engine-part-1)
