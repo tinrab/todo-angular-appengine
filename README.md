@@ -1,7 +1,7 @@
 # Todo List
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/outcrawl/site/master/site/static/images/todo-list-angular-google-app-engine-part-1/finished.gif"/>
+  <img src="https://github.com/outcrawl/site/blob/master/data/posts/todo-list-angular-google-app-engine-part-1/finished.gif"/>
 </p>
 
 A short tutorial series about building a To-Do List using Angular and Google App Engine.
