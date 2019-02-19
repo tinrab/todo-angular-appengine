@@ -5,11 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import {
-  MdButtonModule,
-  MdInputModule,
-  MdListModule,
-  MdIconModule,
-  MdToolbarModule
+  MatButtonModule,
+  MatInputModule,
+  MatListModule,
+  MatIconModule,
+  MatToolbarModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,11 +32,11 @@ import { TodoComponent } from './todo/todo.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    MdButtonModule,
-    MdInputModule,
-    MdListModule,
-    MdIconModule,
-    MdToolbarModule,
+    MatButtonModule,
+    MatInputModule,
+    MatListModule,
+    MatIconModule,
+    MatToolbarModule,
     AppRoutingModule
   ],
   providers: [AuthService, TodoService],

@@ -1,23 +1,23 @@
 <div class="user">
-  Signed in as {{user.displayName}}.
-  <button md-button
+  Signed in as {{user ? user.displayName : 'Anonymous'}}.
+  <button mat-button
           class="user__sign-out"
           (click)="signOut()">Sign out</button>
 </div>
 
 <div>
-  <md-form-field class="new-todo-field">
-    <input mdInput
+  <mat-form-field class="new-todo-field">
+    <input matInput
            type="text"
            placeholder="New To-Do.."
            [(ngModel)]="newTodoTitle"
            (keyup.enter)="createTodo()">
-  </md-form-field>
+  </mat-form-field>
 </div>
 
-<md-list>
+<mat-list>
   <app-todo *ngFor="let todo of todos; trackBy: trackByTodos"
             [item]="todo"
             (updateRequest)="updateTodo(todo, $event)"
             (deleteRequest)="deleteTodo(todo)"></app-todo>
-</md-list>
+</mat-list>

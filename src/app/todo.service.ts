@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
+import { map } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';
 import { Todo } from './todo.model';
@@ -16,45 +15,50 @@ export class TodoService {
 
   constructor(
     private authService: AuthService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
     this.user = authService.currentUser;
     this.headers = new HttpHeaders({
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': this.user.sessionToken
     });
+
+    if (this.user) {
+      this.headers.set('Authorization', this.user.sessionToken);
+    }
   }
 
   createTodo(title: string): Promise<Todo> {
     return this.http.post<Todo>(
       `${environment.apiUrl}/todos`,
-      { title: title },
-      { headers: this.headers }
+      { title },
+      { headers: this.headers },
     ).toPromise();
   }
 
   listTodos(): Promise<Todo[]> {
     return this.http.get<Todo[]>(
       `${environment.apiUrl}/todos`,
-      { headers: this.headers }
+      { headers: this.headers },
     ).toPromise();
   }
 
   updateTodo(id: string, title: string): Promise<Todo> {
     return this.http.post<Todo>(
       `${environment.apiUrl}/todos/${id}`,
-      { title: title },
-      { headers: this.headers }
+      { title },
+      { headers: this.headers },
     ).toPromise();
   }
 
   deleteTodo(id: string): Promise<void> {
     return this.http.delete<Todo>(
       `${environment.apiUrl}/todos/${id}`,
-      { headers: this.headers }
-    ).map(_ => { })
-      .toPromise();
+      { headers: this.headers },
+    ).pipe(
+      map(() => {
+      }),
+    ).toPromise();
   }
 
 }

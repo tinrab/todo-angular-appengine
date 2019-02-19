@@ -1,23 +1,23 @@
-<md-list-item>
+<mat-list-item>
 
-  <span md-line
+  <span mat-line
         *ngIf="!editMode; else titleInput"
         (click)="onTitleClick()">{{item.title}}</span>
 
   <ng-template #titleInput>
-    <md-form-field class="title-input">
-      <input mdInput
+    <mat-form-field class="title-input">
+      <input matInput
              type="text"
              [(ngModel)]="editableTitle"
              (keyup.enter)="update()"
              (blur)="onTitleInputBlur()">
-    </md-form-field>
+    </mat-form-field>
   </ng-template>
 
-  <button md-icon-button
+  <button mat-icon-button
           (click)="delete()"
           [disabled]="editMode">
-    <md-icon class="md-24">done</md-icon>
+    <mat-icon class="md-24">done</mat-icon>
   </button>
 
-</md-list-item>
+</mat-list-item>
